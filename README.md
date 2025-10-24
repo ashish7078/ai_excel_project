@@ -8,9 +8,8 @@ The project is currently in the initial **data exploration and setup phase**.
 
 * **Environment:** A Python virtual environment (`venv`) is set up.
 * **Dependencies:** All required libraries are listed in `requirements.txt`.
-* **Data Generation:** A script (`generate_data.py`) exists to create a test Excel file (`realistic_synthetic_data.xlsx`) with 1000 rows of structured and unstructured data.
-  (!UPCOMING!)
-* **Core Logic:** A test script (`test_pandas.py`) exists to demonstrate the core data manipulation operations (filtering, math, aggregation, pivoting) using the Pandas library.
+* **Data Generation:** A script (`generate_data.py`) exists to create a test Excel file (`realistic_synthetic_data.xlsx`) with 1000 rows of structured and unstructured data. 
+* (!UPCOMING!) **Core Logic:** A test script (`test_pandas.py`) exists to demonstrate the core data manipulation operations (filtering, math, aggregation, pivoting) using the Pandas library.
 
 At this stage, **there is no API or AI integration**. The project consists of standalone scripts for data creation and testing.
 
