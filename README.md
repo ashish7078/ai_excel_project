@@ -1,36 +1,123 @@
-# AI Excel Data Analyzer
+# 🧠 AI-Powered Excel Engine
 
-This project is a work-in-progress to build an AI-powered engine for reading, analyzing, and manipulating data in Excel files using natural language.
+## 📝 Overview
 
-## Current Status (Phase 1)
+The AI-Powered Excel Engine is a backend application built with Python (FastAPI + Pandas) that enables users to interact with Excel files using natural language queries.
 
-The project is currently in the initial **data exploration and setup phase**.
+It can process queries like “show users where Purchase_Amount > 5000” or “find average purchase amount by city”, and returns clean, JSON-formatted responses.
 
-* **Environment:** A Python virtual environment (`venv`) is set up.
-* **Dependencies:** All required libraries are listed in `requirements.txt`.
-* **Data Generation:** A script (`generate_data.py`) exists to create a test Excel file (`realistic_synthetic_data.xlsx`) with 1000 rows of structured and unstructured data. 
-* (!UPCOMING!) **Core Logic:** A test script (`test_pandas.py`) exists to demonstrate the core data manipulation operations (filtering, math, aggregation, pivoting) using the Pandas library.
+This forms the foundation of an AI data assistant capable of analyzing and transforming Excel data intelligently.
 
-At this stage, **there is no API or AI integration**. The project consists of standalone scripts for data creation and testing.
+## ⚙️ Features
 
-## How to Use (Developer Setup)
+-   📂 Upload and read Excel sheets dynamically
+-   💬 Query Excel data using natural language
+-   🧮 Perform operations like filtering, sorting, aggregation, and basic math
+-   🔢 Create new columns with computed results (addition, subtraction, multiplication, division)
+-   🧾 Handle timestamps and data serialization automatically
+-   🧠 Designed for integration with local LLaMA models for offline NLP
+-   🚀 Fast, lightweight, and extendable with minimal dependencies
 
-To set up the project and run the current test files:
+## 🗂️ Project Structure
+ai_excel_project/
+│
+├── fastapi_excel_api.py       # Main FastAPI application and endpoints
+├── excel_engine.py            # Handles all Pandas-based Excel logic
+├── requirements.txt           # Python dependencies
+├── .env                       # Environment variables (e.g., Google API key)
+├── .gitignore                 # Ignored files and folders
+└── README.md                  # Project documentation
 
-### 1. Setup Environment
-First, create and activate the virtual environment, then install the required libraries.
+## 🧩 How to Run
 
-```bash
-# Create the virtual environment
-python -m venv venv
+### 🔧 Prerequisites
 
-# Activate the environment (macOS/Linux)
-source venv/bin/activate
-# (Windows)
-# .\venv\Scripts\activate
+-   Python 3.9 or higher
+-   `pip` installed
+-   Virtual environment (recommended)
+-   Postman or cURL for API testing
 
-# Install all required libraries
-pip install -r requirements.txt
+### 🚀 Steps
 
-#Run the generate_data.py script to create the synthetic_data.xlsx file.
-python generate_data.py
+1.  **Clone the repository**
+    ```sh
+    git clone https://github.com/ashish7078/ai_excel_project.git
+    cd ai_excel_project
+    ```
+
+2.  **Create and activate virtual environment**
+    ```sh
+    python -m venv venv
+    ```
+    *On Windows:*
+    ```sh
+    venv\Scripts\activate
+    ```
+    *On macOS/Linux:*
+    ```sh
+    source venv/bin/activate
+    ```
+
+3.  **Install dependencies**
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+4.  **Create `.env` file**
+    Create a file named `.env` in the root directory and add your API key:
+    ```
+    GOOGLE_API_KEY=your_google_api_key_here
+    ```
+
+5.  **Run the FastAPI server**
+    ```sh
+    uvicorn fastapi_excel_api:app --reload
+    ```
+    The server will run at: `http://127.0.0.1:8000`
+
+## 🧪 Sample Usage (Postman Testing)
+
+### ➤ 1. Upload Excel File
+
+-   **Method:** `POST`
+-   **URL:** `http://127.0.0.1:8000/upload`
+-   **Body (form-data):**
+    -   Key: `file`
+    -   Type: `File`
+    -   Value: (Select your Excel file) (Ex: 'data.xlsx')
+
+**✅ Response:
+    ```json
+    {
+     "message": "File 'data.xlsx' uploaded successfully",
+     "sheets": ["Sheet1", "Users", "Purchases"]
+    }
+
+
+### ➤ 2. Run a Query
+
+-   **Method:** `POST`
+-   **URL:** `http://127.0.0.1:8000/ai_query/data.xlsx/Sheet1`
+-   **Body (raw JSON):**
+    ```json
+    {
+      "query": "Show top 5 users with highest Purchase_Amount",
+    }
+    ```
+
+**✅ Response:**
+```json
+[
+  {
+    "User_ID": "U1000",
+    "Name": "User_0",
+    "Purchase_Amount": 6429.7,
+    "City": "Hyderabad"
+  }
+  {
+    "User_ID": "U1020",
+    "Name": "User_20",
+    "Purchase_Amount": 7429.7,
+    "City": "Mumbai"
+  }
+]

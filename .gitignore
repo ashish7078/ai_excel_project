@@ -1,0 +1,12 @@
+__pycache__/
+.env
+*.xlsx
+*.csv
+*.db
+*.log
+*.pyc
+venv/
+.idea/
+.DS_Store
+logs/
+uploads/
