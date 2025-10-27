@@ -16,8 +16,9 @@ This forms the foundation of an AI data assistant capable of analyzing and trans
 -   🔢 Create new columns with computed results (addition, subtraction, multiplication, division)
 -   🧾 Handle timestamps and data serialization automatically
 -   🚀 Fast, lightweight, and extendable with minimal dependencies
-```
+
 ## 📁 Project Structure
+```
 ai_excel_project/
     |- fastapi_excel_api.py   # Main FastAPI application and endpoints
     |- excel_engine.py        # Handles all Pandas-based Excel logic
