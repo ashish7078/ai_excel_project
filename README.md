@@ -87,7 +87,7 @@ ai_excel_project/
     -   Value: (Select your Excel file) (Ex: 'data.xlsx')
 
 **✅ Response:**
-    ```json
+```json
     {
      "message": "File 'data.xlsx' uploaded successfully",
      "sheets": ["Sheet1", "Users", "Purchases"]
