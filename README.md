@@ -15,7 +15,6 @@ This forms the foundation of an AI data assistant capable of analyzing and trans
 -   🧮 Perform operations like filtering, sorting, aggregation, and basic math
 -   🔢 Create new columns with computed results (addition, subtraction, multiplication, division)
 -   🧾 Handle timestamps and data serialization automatically
--   🧠 Designed for integration with local LLaMA models for offline NLP
 -   🚀 Fast, lightweight, and extendable with minimal dependencies
 ```
 ## 📁 Project Structure
