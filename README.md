@@ -92,7 +92,7 @@ ai_excel_project/
      "message": "File 'data.xlsx' uploaded successfully",
      "sheets": ["Sheet1", "Users", "Purchases"]
     }
-
+```
 
 ### ➤ 2. Run a Query
 
