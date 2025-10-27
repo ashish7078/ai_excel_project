@@ -18,8 +18,17 @@ This forms the foundation of an AI data assistant capable of analyzing and trans
 -   🧠 Designed for integration with local LLaMA models for offline NLP
 -   🚀 Fast, lightweight, and extendable with minimal dependencies
 
-## 🗂️ Project Structure
-ai_excel_project/ │ ├── fastapi_excel_api.py # Main FastAPI application and endpoints ├── excel_engine.py # Handles all Pandas-based Excel logic ├── requirements.txt # Python dependencies ├── .env # Environment variables (e.g., Google API key) ├── .gitignore # Ignored files and folders └── README.md # Project documentation
+📁 Project Structure
+
+ai_excel_project/
+│
+├── fastapi_excel_api.py   # Main FastAPI application and endpoints
+├── excel_engine.py        # Handles all Pandas-based Excel logic
+├── requirements.txt       # Python dependencies
+├── .env                   # Environment variables (e.g., Google API key)
+├── .gitignore             # Ignored files and folders
+└── README.md              # Project documentation
+
 ## 🧩 How to Run
 
 ### 🔧 Prerequisites
