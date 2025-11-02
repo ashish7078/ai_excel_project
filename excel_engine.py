@@ -132,18 +132,27 @@ class ExcelEngine:
     # ----------------------------
     # Filter
     # ----------------------------
-    def filter_data(self, sheet_name, condition):
-        df = self.get_sheet(sheet_name)
-        if df.empty:
-            return df
+    def filter_data(self, sheet_name, query_string, columns=None):
+        data = self.get_sheet(sheet_name)
+        if data.empty:
+            return data
         try:
-            for col in df.columns:
-                if col in condition:
-                    condition = condition.replace(col, f"`{col}`")
-            filtered_df = df.query(condition)
-            return filtered_df
+            temp_query = query_string
+            for col in data.columns:
+                if col in temp_query:
+                    # This replace logic seems a bit redundant if using backticks, but keeping as-is
+                    temp_query = temp_query.replace(col, f"{col}")
+            
+            filtered_data = data.query(temp_query)
+            
+            # This is the new part:
+            if columns and isinstance(columns, list) and all(col in filtered_data.columns for col in columns):
+                return filtered_data[columns]
+            
+            # If no columns are specified, return the whole filtered dataframe
+            return filtered_data
         except Exception as e:
-            print(f"⚠️ Error in filter_data: {e}")
+            print(f"Error in apply_filter: {e}")
             return pd.DataFrame()
 
     # ----------------------------
@@ -238,7 +247,13 @@ class ExcelEngine:
         try:
             op = query.get("operation")
             if op == "filter":
-                return self.filter_data(sheet_name, query.get("condition"))
+                # This is the updated block
+                return self.filter_data(
+                    sheet_name, 
+                    query.get("condition"), 
+                    query.get("columns")  # Pass the new 'columns' list
+                )
+
             elif op == "aggregations":
                 return self.aggregations(sheet_name, query.get("group_by", []), query.get("target"),
                                          query.get("agg_type", "sum"), query.get("condition"))

@@ -135,6 +135,15 @@ async def ai_query(file_name: str, sheet_name: str, body: dict):
       "operation": "filter",
       "condition": "Purchase_Amount > 5000"
     }}
+    
+    1️⃣
+    Example for filtering (specific columns):
+    {{
+        "operation": "filter",
+        "condition": "Department == 'Sales'",
+        "columns": ["FirstName", "LastName"]
+    }}
+
 
     2️⃣ Aggregation:
     {{
