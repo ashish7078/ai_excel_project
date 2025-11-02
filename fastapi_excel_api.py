@@ -133,7 +133,7 @@ async def ai_query(file_name: str, sheet_name: str, body: dict):
     1️⃣ Filter:
     {{
       "operation": "filter",
-      "condition": "Purchase_Amount > 5000"
+      "condition": "`Purchase_Amount` > 5000"
     }}
 
     2️⃣ Aggregation:
@@ -142,20 +142,20 @@ async def ai_query(file_name: str, sheet_name: str, body: dict):
       "group_by": ["City"],
       "target": "Purchase_Amount",
       "agg_type": "sum",
-      "condition": "Purchase_Amount < 5000"
+      "condition": "`Purchase_Amount` < 5000"
     }}
 
     3️⃣ Sort:
     {{
       "operation": "sort",
-      "sort_by": "Purchase_Amount",
+      "sort_by": "`Purchase_Amount`",
       "ascending": false
     }}
 
     4️⃣ Top N:
     {{
       "operation": "top_n",
-      "sort_by": "Purchase_Amount",
+      "sort_by": "`Purchase_Amount`",
       "n": 10,
       "ascending": false
     }}
